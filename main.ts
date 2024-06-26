@@ -3,6 +3,11 @@ player.onChat(".w-lock", function () {
     "gamerule doweathercycle false"
     )
 })
+player.onChat(".kill", function () {
+    mobs.kill(
+    mobs.target(LOCAL_PLAYER)
+    )
+})
 player.onChat(".cleareffects", function () {
     mobs.clearEffect(mobs.target(NEAREST_PLAYER))
 })
@@ -24,6 +29,7 @@ player.onChat(".gms", function () {
     player.execute(
     "gamemode s"
     )
+    gamemode = 2
 })
 player.onChat(".t-unlock", function () {
     player.execute(
@@ -40,6 +46,7 @@ player.onChat(".gma", function () {
     player.execute(
     "gamemode a"
     )
+    gamemode = 3
 })
 player.onChat(".w-rain", function () {
     gameplay.setWeather(RAIN)
@@ -62,6 +69,12 @@ player.onChat(".fly", function () {
 player.onChat(".spawnpoint", function () {
     player.execute(
     "spawnpoint @s ~~~"
+    )
+})
+player.onChat(".tp", function (x, y, z) {
+    mobs.teleportToPosition(
+    mobs.target(LOCAL_PLAYER),
+    pos(x, y, z)
     )
 })
 player.onChat(".d-hard", function () {
@@ -89,16 +102,11 @@ player.onChat(".stopfly", function () {
     "ability @s mayfly false"
     )
 })
-player.onChat(".tp", function (X2, Y, Z2) {
-    mobs.teleportToPosition(
-    mobs.target(LOCAL_PLAYER),
-    pos(X2, Y, Z2)
-    )
-})
 player.onChat(".gmc", function () {
     player.execute(
     "gamemode c"
     )
+    gamemode = 1
 })
 player.onChat(".godmode", function () {
     player.execute(
@@ -113,6 +121,9 @@ player.onChat(".give", function (item, amount) {
     )
 })
 player.onChat(".help", function () {
+    player.execute(
+    "tellraw @s {\"rawtext\":[{\"text\":\"--------------------------------------------------------------------------\"}]}"
+    )
     player.execute(
     "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .d-[difficulty]\"}]}"
     )
@@ -141,7 +152,7 @@ player.onChat(".help", function () {
     "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .stopfly\"}]}"
     )
     player.execute(
-    "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .suicide\"}]}"
+    "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .kill\"}]}"
     )
     player.execute(
     "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .fullbright\"}]}"
@@ -167,18 +178,13 @@ player.onChat(".help", function () {
     player.execute(
     "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .spawnpoint\"}]}"
     )
+    player.execute(
+    "tellraw @s {\"rawtext\":[{\"text\":\"--------------------------------------------------------------------------\"}]}"
+    )
 })
 player.onChat(".fullbright", function () {
     player.execute(
     "effect @s night_vision 999999 1 true"
-    )
-})
-player.onChat(".suicide", function () {
-    player.execute(
-    "gamemode s"
-    )
-    mobs.kill(
-    mobs.target(RANDOM_PLAYER)
     )
 })
 player.onChat(".t-night", function () {
@@ -190,6 +196,7 @@ player.onChat(".w-clear", function () {
 player.onChat(".t-day", function () {
     gameplay.timeSet(gameplay.time(DAY))
 })
+let gamemode = 0
 player.execute(
 "title @s title §8§lAgent Client V1"
 )
