@@ -1,5 +1,15 @@
+player.onChat(".w-lock", function () {
+    player.execute(
+    "gamerule doweathercycle false"
+    )
+})
 player.onChat(".cleareffects", function () {
     mobs.clearEffect(mobs.target(NEAREST_PLAYER))
+})
+player.onChat(".t-lock", function () {
+    player.execute(
+    "gamerule dodaylightcycle false"
+    )
 })
 player.onChat(".w-thunder", function () {
     gameplay.setWeather(THUNDER)
@@ -13,6 +23,11 @@ player.onChat(".t-dawn", function () {
 player.onChat(".gms", function () {
     player.execute(
     "gamemode s"
+    )
+})
+player.onChat(".t-unlock", function () {
+    player.execute(
+    "gamerule dodaylightcycle true"
     )
 })
 player.onChat(".t-midnight", function () {
@@ -29,6 +44,11 @@ player.onChat(".gma", function () {
 player.onChat(".w-rain", function () {
     gameplay.setWeather(RAIN)
 })
+player.onChat(".w-unlock", function () {
+    player.execute(
+    "gamerule doweathercycle true"
+    )
+})
 player.onChat(".instakill", function () {
     player.execute(
     "effect @s strength 999999 255 true"
@@ -37,6 +57,11 @@ player.onChat(".instakill", function () {
 player.onChat(".fly", function () {
     player.execute(
     "ability @s mayfly true"
+    )
+})
+player.onChat(".spawnpoint", function () {
+    player.execute(
+    "spawnpoint @s ~~~"
     )
 })
 player.onChat(".d-hard", function () {
@@ -92,10 +117,10 @@ player.onChat(".help", function () {
     "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .d-[difficulty]\"}]}"
     )
     player.execute(
-    "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .t-[time] (day, dawn, midday, dusk, night, midnight)\"}]}"
+    "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .t-[time] (day, dawn, midday, dusk, night, midnight, lock, unlock)\"}]}"
     )
     player.execute(
-    "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .w-[weather] (clear, rain. thunder)\"}]}"
+    "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .w-[weather] (clear, rain. thunder, lock, unlock)\"}]}"
     )
     player.execute(
     "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .give [item id] [amount]\"}]}"
@@ -138,6 +163,9 @@ player.onChat(".help", function () {
     )
     player.execute(
     "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .tp [x] [y] [z]\"}]}"
+    )
+    player.execute(
+    "tellraw @s {\"rawtext\":[{\"text\":\"<§8§lAgent§r> .spawnpoint\"}]}"
     )
 })
 player.onChat(".fullbright", function () {
